@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
@@ -11,6 +10,7 @@ import {
 import { FaToggleOn, FaToggleOff, FaTrash, FaCheck, FaTimes } from 'react-icons/fa';
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { IoIosSave } from "react-icons/io";
+import PropTypes from 'prop-types';
 
 const TodoItem = ({ todo }) => {
   const dispatch = useDispatch();
@@ -20,6 +20,13 @@ const TodoItem = ({ todo }) => {
   const handleEditSave = () => {
     dispatch(editTodo({ id: todo.id, text: editedTitle }));
     setIsEditing(false);
+  };
+
+  const handleDelete = () => {
+    const isConfirmed = window.confirm('Are you sure you want to delete this todo?');
+    if (isConfirmed) {
+      dispatch(removeTodo({ id: todo.id }));
+    }
   };
 
   return (
@@ -68,7 +75,7 @@ const TodoItem = ({ todo }) => {
         )}
         <button
           className="mr-2 text-sm bg-red-500 text-white sm:px-2 px-1 py-1 rounded"
-          onClick={() => dispatch(removeTodo({ id: todo.id }))}
+          onClick={handleDelete}
         >
           <FaTrash />
         </button>
@@ -87,6 +94,10 @@ const TodoItem = ({ todo }) => {
       </div>
     </li>
   );
+};
+
+TodoItem.propTypes = {
+  todo: PropTypes.object.isRequired,
 };
 
 export default TodoItem;
