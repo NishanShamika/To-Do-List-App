@@ -54,6 +54,7 @@ const TodoItem = ({ todo }) => {
         <button
           className="mr-2 text-sm bg-blue-500 text-white sm:px-2 px-1 py-1 rounded"
           onClick={() => dispatch(toggleTodo({ id: todo.id }))}
+          title={!todo.completed ? "Incomplete" : "Completed"}
         >
           {!todo.completed ? <FaToggleOff /> : <FaToggleOn />}
         </button>
@@ -76,18 +77,21 @@ const TodoItem = ({ todo }) => {
         <button
           className="mr-2 text-sm bg-red-500 text-white sm:px-2 px-1 py-1 rounded"
           onClick={handleDelete}
+          title="Delete"
         >
           <FaTrash />
         </button>
         <button
           className="text-sm bg-blue-500 text-white sm:px-2 px-1 py-1 rounded"
           onClick={() => setIsEditing(true)}
+          title="Edit"
         >
           <MdOutlineModeEditOutline />
         </button>
         <button
           className="text-sm bg-green-500 text-white sm:px-2 px-1 py-1 rounded"
           onClick={handleEditSave}
+          title="Save"
         >
           <IoIosSave />
         </button>

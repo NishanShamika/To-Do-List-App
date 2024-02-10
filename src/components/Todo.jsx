@@ -37,6 +37,7 @@ const Todo = () => {
         <button
           className="ml-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"
           onClick={handleAddTodoClick}
+          title="Add"
         >
           <BsPlus size={20} />
         </button>
@@ -51,7 +52,10 @@ const Todo = () => {
             placeholder="Search Todos"
             onChange={(e) => handleSearchChange(e.target.value)}
           />
-          <button className="ml-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none">
+          <button 
+            className="ml-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"
+            title="Search"
+          >
             <BsSearch size={20} />
           </button>
         </div>
